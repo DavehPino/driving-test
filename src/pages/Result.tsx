@@ -33,7 +33,7 @@ export function Result() {
         </p>
         <h1
           id="result-title"
-          className={`mt-2 text-4xl font-black tracking-tight ${score.passed ? 'text-success' : 'text-danger'}`}
+          className={`mt-2 text-4xl font-black tracking-tight motion-safe:animate-panel-in ${score.passed ? 'text-success' : 'text-danger'}`}
         >
           {score.passed ? 'APROBADO' : 'DESAPROBADO'}
         </h1>
@@ -85,7 +85,7 @@ export function Result() {
           <h2 id="topics-title" className="mb-3 text-lg font-semibold">
             Resultado por tema
           </h2>
-          <div className="overflow-x-auto rounded-xl border border-border bg-surface">
+          <div className="overflow-x-auto rounded-xl bg-surface shadow-card">
             <table className="w-full text-left text-sm">
               <thead className="text-text-muted">
                 <tr className="border-b border-border">
@@ -152,7 +152,7 @@ function ReviewList({ title, subtitle, items, answers }: ReviewListProps) {
         {items.map((q) => {
           const chosen = answers[q.id]
           return (
-            <li key={q.id} className="rounded-xl border border-border bg-surface p-4">
+            <li key={q.id} className="rounded-xl bg-surface p-4 shadow-card">
               <p className="text-xs text-text-muted">{TOPIC_LABEL[q.topic]}</p>
               <p className="mt-1 font-medium">{q.text}</p>
               {chosen === undefined ? (

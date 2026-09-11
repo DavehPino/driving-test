@@ -37,7 +37,7 @@ export function Timer({ deadline, onExpire }: TimerProps) {
     <div
       role="timer"
       aria-label="Tiempo restante"
-      className={`rounded-lg border px-3 py-1.5 font-mono text-lg tabular-nums ${
+      className={`rounded-lg border px-3 py-1.5 font-mono text-lg tabular-nums transition-colors duration-150 ease-out ${
         warning ? 'border-danger text-danger' : 'border-border text-info'
       }`}
     >

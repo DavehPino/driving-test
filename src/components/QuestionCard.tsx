@@ -21,9 +21,9 @@ function optionClass(state: 'idle' | 'selected' | 'correct' | 'wrong' | 'dimmed'
     case 'selected':
       return `${base} border-primary bg-surface-2`
     case 'correct':
-      return `${base} border-2 border-success bg-success/10`
+      return `${base} border-success bg-success/10 ring-1 ring-inset ring-success`
     case 'wrong':
-      return `${base} border-2 border-danger bg-danger/10`
+      return `${base} border-danger bg-danger/10 ring-1 ring-inset ring-danger`
     case 'dimmed':
       return `${base} border-border bg-surface text-text-muted`
     default:
@@ -76,7 +76,7 @@ export function QuestionCard({ question, mode, selected, revealed, onSelect }: Q
             >
               <kbd
                 aria-hidden="true"
-                className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded border border-border font-mono text-xs text-text-muted"
+                className="-mt-px flex h-6 w-6 shrink-0 items-center justify-center rounded border border-border font-mono text-xs text-text-muted"
               >
                 {KEYS[i]}
               </kbd>
@@ -89,7 +89,7 @@ export function QuestionCard({ question, mode, selected, revealed, onSelect }: Q
       {showFeedback && (
         <div
           role="status"
-          className={`mt-5 rounded-lg border p-4 ${isRight ? 'border-success/60' : 'border-danger/60'}`}
+          className={`mt-5 rounded-lg border p-4 motion-safe:animate-fade-in ${isRight ? 'border-success/60' : 'border-danger/60'}`}
         >
           <p className={`font-semibold ${isRight ? 'text-success' : 'text-danger'}`}>
             {isRight ? '¡Correcto!' : 'Incorrecto'}

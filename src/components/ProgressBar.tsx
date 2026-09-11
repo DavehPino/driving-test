@@ -10,10 +10,10 @@ export function ProgressBar({ current, total, answered }: ProgressBarProps) {
   return (
     <div>
       <div className="flex items-baseline justify-between text-sm">
-        <span className="font-medium">
+        <span className="font-medium tabular-nums">
           Pregunta {current} de {total}
         </span>
-        <span className="text-text-muted">{answered} respondidas</span>
+        <span className="tabular-nums text-text-muted">{answered} respondidas</span>
       </div>
       <div
         role="progressbar"
@@ -23,7 +23,7 @@ export function ProgressBar({ current, total, answered }: ProgressBarProps) {
         aria-valuenow={current}
         className="mt-2 h-2 overflow-hidden rounded-full bg-surface-2"
       >
-        <div className="h-full rounded-full bg-primary transition-[width]" style={{ width: `${pct}%` }} />
+        <div className="h-full rounded-full bg-primary transition-[width] duration-300 ease-out" style={{ width: `${pct}%` }} />
       </div>
     </div>
   )

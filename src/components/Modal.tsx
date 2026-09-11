@@ -69,7 +69,7 @@ export function Modal({ open, onClose, title, children, footer }: ModalProps) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 px-4 pb-4 sm:items-center sm:pb-0"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 px-4 pb-4 motion-safe:animate-fade-in sm:items-center sm:pb-0"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) onClose()
       }}
@@ -80,7 +80,7 @@ export function Modal({ open, onClose, title, children, footer }: ModalProps) {
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
-        className="max-h-[90dvh] w-full max-w-lg overflow-y-auto rounded-xl border border-border bg-surface p-5 shadow-2xl focus:outline-none"
+        className="max-h-[90dvh] w-full max-w-lg overflow-y-auto rounded-xl bg-surface p-5 shadow-card motion-safe:animate-panel-in focus:outline-none"
       >
         <div className="flex items-start justify-between gap-4">
           <h2 id={titleId} className="text-lg font-semibold">
@@ -90,9 +90,21 @@ export function Modal({ open, onClose, title, children, footer }: ModalProps) {
             type="button"
             onClick={onClose}
             aria-label="Cerrar"
-            className="-m-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-2xl leading-none text-text-muted hover:bg-surface-2 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="-m-2.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-text-muted transition-colors duration-150 ease-out hover:bg-surface-2 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
-            ×
+            <svg
+              aria-hidden="true"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
           </button>
         </div>
         <div className="mt-4">{children}</div>

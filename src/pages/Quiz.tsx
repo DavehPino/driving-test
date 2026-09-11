@@ -76,7 +76,7 @@ export function Quiz() {
 
       <ProgressBar current={attempt.index + 1} total={questions.length} answered={answeredCount} />
 
-      <div className="rounded-xl border border-border bg-surface p-5">
+      <div className="rounded-xl bg-surface p-5 shadow-card">
         <QuestionCard
           key={question.id}
           question={question}

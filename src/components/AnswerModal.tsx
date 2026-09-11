@@ -32,7 +32,7 @@ export function AnswerModal({ open, onClose, question }: AnswerModalProps) {
               key={i}
               className={
                 correct
-                  ? 'flex gap-3 rounded-lg border-2 border-success bg-success/10 p-3 font-medium'
+                  ? 'flex gap-3 rounded-lg border border-success bg-success/10 p-3 font-medium ring-1 ring-inset ring-success'
                   : 'flex gap-3 rounded-lg border border-border p-3 text-text-muted'
               }
             >

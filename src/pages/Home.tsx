@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TOPICS } from '../data/topics'
 import type { Topic } from '../data/types'
-import { btnPrimary, btnSecondary } from '../components/ui'
+import { btnPrimary, btnSecondary, pressable } from '../components/ui'
 import { countByTopic } from '../lib/bank'
 import { formatDate } from '../lib/format'
 import { EXAM_MINUTES, EXAM_QUESTIONS, passThreshold, roundTo1 } from '../lib/scoring'
@@ -42,7 +42,7 @@ export function Home() {
   return (
     <div className="space-y-8">
       {inProgress && (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-info/50 bg-surface p-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-info/50 bg-surface p-4 shadow-card">
           <p>
             Tenés un {inProgress.mode === 'exam' ? 'simulacro' : 'intento de práctica'} en curso.
           </p>
@@ -99,7 +99,7 @@ export function Home() {
                       className="peer sr-only"
                     />
                     <span
-                      className={`flex min-h-12 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface font-semibold peer-checked:border-primary peer-checked:bg-surface-2 peer-checked:text-primary peer-focus-visible:ring-2 peer-focus-visible:ring-primary`}
+                      className={`flex min-h-12 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface font-semibold transition-colors duration-150 ease-out hover:bg-surface-2 peer-checked:border-primary peer-checked:bg-surface-2 peer-checked:text-primary peer-focus-visible:ring-2 peer-focus-visible:ring-primary`}
                     >
                       {n}
                     </span>
@@ -141,7 +141,7 @@ export function Home() {
         )}
 
         <div
-          className={`rounded-xl border p-4 ${isExam ? 'border-border bg-surface/50' : 'border-border bg-surface'}`}
+          className={`rounded-xl p-4 shadow-card transition-colors duration-150 ease-out ${isExam ? 'bg-surface/50' : 'bg-surface'}`}
           title={isExam ? EXAM_HELP : undefined}
         >
           <label className={`flex items-start gap-3 ${isExam ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
@@ -189,7 +189,7 @@ export function Home() {
 }
 
 function chipClass(on: boolean): string {
-  return `min-h-10 rounded-full border px-3.5 py-1.5 text-sm ${focusRing} ${
+  return `min-h-11 rounded-full border px-3.5 py-1.5 text-sm ${pressable} ${focusRing} ${
     on ? 'border-primary bg-primary/15 text-primary' : 'border-border bg-surface text-text-muted hover:text-text'
   }`
 }
@@ -213,7 +213,7 @@ function ModeCard({ value, checked, onChange, title, description }: ModeCardProp
         onChange={() => onChange(value)}
         className="peer sr-only"
       />
-      <span className="block h-full rounded-xl border border-border bg-surface p-4 peer-checked:border-primary peer-checked:bg-surface-2 peer-focus-visible:ring-2 peer-focus-visible:ring-primary">
+      <span className="block h-full rounded-xl border border-border bg-surface p-4 transition-colors duration-150 ease-out hover:bg-surface-2 peer-checked:border-primary peer-checked:bg-surface-2 peer-focus-visible:ring-2 peer-focus-visible:ring-primary">
         <span className="block font-semibold">{title}</span>
         <span className="mt-1 block text-sm text-text-muted">{description}</span>
       </span>
@@ -248,7 +248,7 @@ function RecentAttempts() {
           </span>
         </div>
       </div>
-      <ul className="divide-y divide-border rounded-xl border border-border bg-surface">
+      <ul className="divide-y divide-border rounded-xl bg-surface shadow-card">
         {recent.map((e) => (
           <li key={e.id} className="flex items-center justify-between gap-3 px-4 py-3">
             <div>
